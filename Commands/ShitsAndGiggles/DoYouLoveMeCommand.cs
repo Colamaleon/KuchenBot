@@ -27,9 +27,7 @@ namespace KuchenBot.Commands.ShitsAndGiggles
         public static void Register(CommandService service)
         {
             if (instance == null)
-            {
-                instance = new DoYouLoveMeCommand(service);
-            }
+            { instance = new DoYouLoveMeCommand(service); }
         }
 
     }
