@@ -16,3 +16,5 @@ G:\Projects\Gameslab\GLaDOS\KuchenBot\bin\Debug\RestSharp.xml
 G:\Projects\Gameslab\GLaDOS\KuchenBot\obj\x86\Debug\KuchenBot.csprojResolveAssemblyReference.cache
 G:\Projects\Gameslab\GLaDOS\KuchenBot\obj\x86\Debug\KuchenBot.exe
 G:\Projects\Gameslab\GLaDOS\KuchenBot\obj\x86\Debug\KuchenBot.pdb
+D:\Users\Christopher\Documents\KuchenBot\obj\x86\Debug\KuchenBot.exe
+D:\Users\Christopher\Documents\KuchenBot\obj\x86\Debug\KuchenBot.pdb
