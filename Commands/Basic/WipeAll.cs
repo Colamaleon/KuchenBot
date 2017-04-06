@@ -12,11 +12,12 @@ using DiscBot.Commands.Attributes;
 namespace DiscBot.Commands.Basic
 {
     [Attributes.Password("sure!")]
-    class WipeAll
+    class WipeAll : GLaDOSCommand
     {
         public void Register(CommandService service)
         {
             service.CreateCommand("wipeall")
+                .Alias(new string[] { "fullwipe"})
                 .Description("wipes all the messages in the current channel")
                 .Do(Run);
         }
