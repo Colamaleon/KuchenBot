@@ -38,9 +38,7 @@ namespace KuchenBot
                 x.PrefixChar = '!';
                 x.AllowMentionPrefix = false;
             });
-
-            CreateCommands();
-
+            
             // Check for local token
             if (!TokenExists)
             {
@@ -149,19 +147,6 @@ namespace KuchenBot
         public async void Disconnect()
         {
             await discord.Disconnect();
-        }
-
-        #endregion
-        #region createCommands
-
-        private void CreateCommands()
-        {
-            var comService = discord.GetService<CommandService>();
-
-            //Put your Command Classes here
-            Basic.Init(comService);
-            ShitsAndGiggles.Init(comService);
-            DMOnly.Init(comService);
         }
 
         #endregion
