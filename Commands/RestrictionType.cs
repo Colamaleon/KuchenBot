@@ -1,0 +1,1 @@
+﻿public enum RestrictionType { Include, Exclude}

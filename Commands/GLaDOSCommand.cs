@@ -12,34 +12,23 @@ namespace KuchenBot.Commands
     /// <summary>
     /// The baseclass for all of GLaDOS' commands.
     /// </summary>
-    class GLaDOSCommand
+    public class GLaDOSCommand
     {
-        public enum PermissionRestrictions { Ignore, Allow, Exclude };
+        //protected GLaDOSCommandProperties properties;
 
-        #region Restrictions
+        #region Init
 
-        protected Func<string> passwordGetter;
-        protected bool requirePassword { get { return passwordGetter != null; } }
-
-        protected bool allowDM;
-        protected PermissionRestrictions channelRestrictions; 
-        protected List<ulong> channelList;                      // a list of channels. Whether the command includes or excludes these channels is determined by channelRestrictions.
-
-        protected PermissionRestrictions roleRestrictions;
-        protected List<ulong> roleList;
-
-        protected PermissionRestrictions userRestrictions;
-        protected List<ulong> userList;
+        /// <summary>
+        /// Init this command using a dafault config. This default command can be run anywhere, by everyone and doesn't notify the user.
+        /// </summary>
+        protected GLaDOSCommand()
+        {
+            //properties = new GLaDOSCommandProperties();
+        }
 
         #endregion
-        #region Notifications
 
-        protected bool shouldNotifyOnWrongChannel;              //should the bot send a message if the user posted the command to the wrong chat
-        protected bool respondViaPM;                            //should this notification be a pm or should it be posted directly to that channel
-
-        protected string wrongChannelResponse = "You cannot use this command in this channel";
-
-        #endregion
+        #region Checks
 
         /// <summary>
         /// Run checks for this command using the attributes above.
@@ -48,68 +37,56 @@ namespace KuchenBot.Commands
         /// <returns>Is this a valid use of this command?</returns>
         protected bool RunChecks(CommandEventArgs args)
         {
-
             //Did they post to the correct channel?
-            switch (channelRestrictions)
-            {
-                case PermissionRestrictions.Allow:
-
-                    break;
-
-                case PermissionRestrictions.Exclude:
-
-                    break;
-
-                default:
-
-                    break;
-            }
+            CheckChannel(args);
 
             //Is this user explicitly allowed to run this command?
-            switch (userRestrictions)
-            {
-                case PermissionRestrictions.Allow:
-
-                    break;
-
-                case PermissionRestrictions.Exclude:
-
-                    break;
-
-                default:
-
-                    break;
-            }
+            CheckUser(args);
 
             //Do they have permission to run this command? 
-            switch (roleRestrictions)
-            {
-                case PermissionRestrictions.Allow:
-
-                    break;
-
-                case PermissionRestrictions.Exclude:
-
-                    break;
-
-                default:
-
-                    break;
-            }
-
+            CheckRole(args);
 
             throw new NotImplementedException();
         }
 
-        ///TODO: Put something to edit the configuration here
+        /// <summary>
+        /// Run actions to be taken after the command was executed.
+        /// </summary>
+        /// <param name="args">the commandArgs being passed</param>
+        protected void RunPostActions(CommandEventArgs args)
+        {
+            throw new NotImplementedException();
+        }
+
 
         /// <summary>
-        /// Create/Save a config file for this command. So, even if the Bot crashes things like permission setups won't be lost.
+        /// Checks if the command was used in the correct channel
         /// </summary>
-        public static void SaveConfig()
+        /// <returns>Is this the correct channel?</returns>
+        private bool CheckChannel(CommandEventArgs args)
         {
-
+            throw new NotImplementedException();
         }
+
+        /// <summary>
+        /// Checks if the command was used by a permissioned user via id
+        /// </summary>
+        /// <returns>Is this user allowed to run this command?</returns>
+        private bool CheckUser(CommandEventArgs args)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Checks if the command was used by a permissioned user via roles
+        /// </summary>
+        /// <returns>Is this role allowed to run this command?</returns>
+        private bool CheckRole(CommandEventArgs args)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
 
     }
 }

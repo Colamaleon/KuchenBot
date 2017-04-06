@@ -57,9 +57,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\Basic.cs" />
-    <Compile Include="Commands\CommandUtil.cs" />
+    <Compile Include="Commands\CommandAttributes\Password.cs" />
+    <Compile Include="Commands\CommandAttributes\Restrict.cs" />
+    <Compile Include="Commands\CommandAttributes\RestrictChannels.cs" />
+    <Compile Include="Commands\CommandAttributes\RestrictRoles.cs" />
+    <Compile Include="Commands\CommandAttributes\RestrictUsers.cs" />
+    <Compile Include="Commands\DefaultCommandProperties\DMOnlyCommandProperties.cs" />
     <Compile Include="Commands\DMOnly.cs" />
     <Compile Include="Commands\GLaDOSCommand.cs" />
+    <Compile Include="Commands\DefaultCommandProperties\GLaDOSCommandProperties.cs" />
+    <Compile Include="Commands\RestrictionType.cs" />
     <Compile Include="Commands\ShitsAndGiggles.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

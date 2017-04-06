@@ -34,10 +34,11 @@ namespace KuchenBot.Commands
 
             public static async Task Run(CommandEventArgs args)
             {
+                /*
                 if (CommandUtil.IsDirectMessage(args, true))
                 {
                     await args.User.PrivateChannel.SendMessage(args.User.Id.GetHashCode().ToString());
-                }
+                }*/
             }
         }
 
