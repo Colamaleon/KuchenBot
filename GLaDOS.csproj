@@ -65,7 +65,8 @@
     <Compile Include="Commands\Basic\DoYouLoveMe.cs" />
     <Compile Include="Commands\Basic\Hello.cs" />
     <Compile Include="Commands\Basic\WipeAll.cs" />
-    <Compile Include="Commands\CommandLine\Token.cs" />
+    <Compile Include="Commands\Terminal\TerminalCommand.cs" />
+    <Compile Include="Commands\Terminal\Token.cs" />
     <Compile Include="Commands\ShitsAndGiggles\LetsBeFriends.cs" />
     <Compile Include="Commands\GLaDOSCommand.cs" />
     <Compile Include="Commands\RestrictionType.cs" />
