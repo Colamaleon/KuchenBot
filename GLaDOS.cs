@@ -10,10 +10,18 @@ namespace KuchenBot
     {
         #region Attributes
 
-        DiscordClient discord;
+        private static string AppDataPath
+        { get { return Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\GLaDOS"; } }
+        private static string TokenPath
+        { get { return AppDataPath + "\\localtoken.txt"; } }
+        private static bool TokenExists
+        { get { return System.IO.File.Exists(TokenPath); } }
 
+        DiscordClient discord;
+        
         #endregion
-        #region init
+
+        #region Init
 
         public GLaDOS()
         {
@@ -66,13 +74,7 @@ namespace KuchenBot
             }
         }
 
-        private static string AppDataPath
-        { get { return Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\GLaDOS"; } }
-        private static string TokenPath
-        { get { return AppDataPath + "\\localtoken.txt"; } }
-        private static bool TokenExists
-        { get { return System.IO.File.Exists(TokenPath); } }
-        protected async void CommandListener()
+        protected void CommandListener()
         {
             bool runCommands = true;
             while (runCommands)
