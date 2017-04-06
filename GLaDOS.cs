@@ -58,7 +58,7 @@ namespace DiscBot
             Console.WriteLine(UI.AsciiArt.PadForConsole(UI.AsciiArt.GetCake()));
             Console.WriteLine(UI.AsciiArt.GetGlados());
             Console.WriteLine(UI.AsciiArt.GetCloser());
-            Console.WriteLine("Booting...");
+            Console.WriteLine();
         }
 
         protected void Login()
