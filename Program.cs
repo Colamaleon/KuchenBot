@@ -9,8 +9,12 @@ namespace DiscBot
 
 		public static void Main(string[] args)
         {
-            Console.WriteLine("Initialize");
-            glados = new GLaDOS();
+            Console.WriteLine(UI.AsciiArt.GetHeader());
+            Console.WriteLine(UI.AsciiArt.PadForConsole(UI.AsciiArt.GetCake()));
+            Console.WriteLine(UI.AsciiArt.GetGLaDOS2());
+            Console.WriteLine(UI.AsciiArt.GetCloser());
+            //glados = new GLaDOS();
+            Console.ReadKey();
 		}
     }
 }

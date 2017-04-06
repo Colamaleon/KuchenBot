@@ -8,7 +8,19 @@ namespace DiscBot.UI
 {
     public class AsciiArt
     {
-        public static string GetCake()
+       public static string GetHeader()
+        {
+            return @"--------------------------------- Now Booting ---------------------------------
+-------------------------------------------------------------------------------";
+        }
+
+       public static string GetCloser()
+        {
+            return string.Format(@"-------------------------------------------------------------------------------
+---------------------------------------------------- V. {0} ----", System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString().PadRight(18));
+        }
+
+       public static string GetCake()
         {
             return
 @"            ,:/+/-
@@ -31,6 +43,52 @@ M###################@%=           =+@MH%
      .= +HM#######M+/+HM@+=.
          ,:/% XM####H/.
               ,.:= -.";
+        }
+
+       public static string GetGLaDOS2()
+        {
+            return @"    #########  ###                         #########    ##########    #########
+  ###########  ###                         ##########   ##########   #########
+ ###      ###  ###             ###### ###  ##     ####  ##    # ##  ###
+###            ###           ###########   ##      ###  ##   #  ##   ###
+###  ########  ###          ###     ###    ##      ###  ##  #   ##    #######
+###  ##   ###  ###         ###     ###     ##      ###  ## #    ##         ###
+###      ####  ###         ###     ###     ##     ####  ###     ##          ###
+ ###########   ##########  ###########     ##########   ##########   #########
+  #########    ##########    ###### ###    #########    ##########  #########";
+        }
+
+       public static string PadForConsole(string source, int charsPerLine = 80)
+        {
+            string[] lines = source.Split('\n');
+            int longestLineLength = 0;
+
+            for(int i=0; i < lines.Length; i++)
+            {
+                lines[i].TrimEnd(); //ignore trailing whitespace
+                longestLineLength = Math.Max(longestLineLength, lines[i].Length); // find the longest line
+            }
+
+            int leftwhitespace = (int)Math.Floor((double)((charsPerLine - longestLineLength)/2D));
+            if(leftwhitespace < 0)
+            {
+                //art is too long.
+                return source;
+            }else
+            {
+                string result = "";
+
+                for(int a = 0; a < lines.Length; a++)
+                {
+                    for (int b = 0; b < leftwhitespace; b++)
+                    {
+                        lines[a] = " " + lines[a];
+                    }
+                    result += lines[a] + '\n';
+                }
+
+                return result;
+            }
         }
     }
 }
