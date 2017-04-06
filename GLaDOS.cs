@@ -32,16 +32,113 @@ namespace KuchenBot
 
             CreateCommands();
 
-            //Login
-            discord.ExecuteAndWait(async () => 
-			{
-				await discord.Connect("Mjk4OTE5ODgyMDIyNTg0MzIx.C8bOxw.lRppHNesnRCqwOS0vTMVm187jEo", TokenType.Bot);
-                Console.WriteLine("-------- DONE --------");
-            });
+            // Check for local token
+            if (!TokenExists)
+            {
+                RegisterLocalToken();
+            }
 
-		}
+            // Login
+            Login();
+        }
 
-		private void Log(object sender, LogMessageEventArgs args)
+        protected void Login()
+        {
+            try
+            {
+                discord.ExecuteAndWait(async () =>
+                {
+                    await discord.Connect(GetLocalToken(), TokenType.Bot);
+
+                    // Start command listener
+                    CommandListener();
+                });
+            }
+            catch (System.Exception ex)
+            {
+                Console.WriteLine("GLaDOS could not be started. ");
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("");
+
+                // Register new local token
+                RegisterLocalToken();
+            }
+        }
+
+        private static string AppDataPath
+        { get { return Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData); } }
+        private static string TokenPath
+        { get { return AppDataPath + "\\GLaDOS\\localtoken.txt"; } }
+        private static bool TokenExists
+        { get { return System.IO.File.Exists(TokenPath); } }
+        protected void CommandListener()
+        {
+            bool runCommands = true;
+            while (runCommands)
+            {
+                string command = Console.ReadLine();
+                if (command == "exit")
+                {
+                    discord.Disconnect();
+                    runCommands = false;
+                    continue;
+                }
+                if (command.StartsWith("registertoken "))
+                {
+                    string token = command.Replace("registertoken ", "");
+                    SetLocalToken(token);
+
+                    discord.Disconnect();
+                    Console.WriteLine("");
+                    Login();
+
+                    continue;
+                }
+
+                Console.WriteLine("No such command");
+            }
+        }
+        protected string GetLocalToken()
+        {
+            try
+            {
+                return System.IO.File.ReadAllText(TokenPath);
+            }
+            catch (Exception ex)
+            {
+                return "";
+            }
+        }
+        protected bool SetLocalToken(string token)
+        {
+            try
+            {
+                if (!System.IO.Directory.Exists(AppDataPath))
+                {
+                    System.IO.Directory.CreateDirectory(AppDataPath);
+                }
+                System.IO.StreamWriter file = new System.IO.StreamWriter(TokenPath);
+                file.WriteLine(token);
+                file.Close();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+        protected void RegisterLocalToken()
+        {
+            Console.WriteLine("Please enter the bot token");
+            string token = Console.ReadLine();
+            SetLocalToken(token);
+            Console.WriteLine("");
+
+            Login();
+        }
+
+        private void Log(object sender, LogMessageEventArgs args)
 		{
 			Console.WriteLine(args.Message);
 		}
