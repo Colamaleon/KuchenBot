@@ -2,7 +2,6 @@
 using Discord.Commands;
 
 using System;
-using DiscBot.Commands;
 
 namespace DiscBot
 {
@@ -53,7 +52,7 @@ namespace DiscBot
 
         private void Welcome()
         {
-            Console.Write(GLaDOS.UI.)
+            //Console.Write(DiscBot.)
         }
 
         protected void Login()

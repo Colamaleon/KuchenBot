@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DiscBot.UI
 {
-    public static class AsciiArt
+    public class AsciiArt
     {
         public static string GetCake()
         {
