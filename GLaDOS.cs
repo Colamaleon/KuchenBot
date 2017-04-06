@@ -3,6 +3,8 @@ using Discord.Commands;
 
 using System;
 
+using DiscBot.UI;
+
 namespace DiscBot
 {
     public class GLaDOS
@@ -39,10 +41,7 @@ namespace DiscBot
 
             // Welcome
             Welcome();
-
-            // Try booting
-            Console.WriteLine("Booting GLaDOS...");
-
+            
             // Check for local token
             if (!TokenExists)
             {
@@ -55,12 +54,11 @@ namespace DiscBot
 
         private void Welcome()
         {
+            Console.Write(AsciiArt.GetCake());
             Console.WriteLine();
-            Console.Write(DiscBot.UI.AsciiArt.GetCake());
+            Console.WriteLine(AsciiArt.GetGlados());
             Console.WriteLine();
-            Console.WriteLine("Welcome to the Games Lab and Developer Operating System!");
-            Console.WriteLine();
-            Console.WriteLine();
+            Console.WriteLine("Booting...");
         }
 
         protected void Login()
