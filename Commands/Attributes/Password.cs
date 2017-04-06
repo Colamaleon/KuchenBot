@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Discord.Commands;
 using Discord;
 
-namespace DiscBot.Commands.Attributes
+namespace DiscBot.Actions.Attributes
 {
     [AttributeUsage(AttributeTargets.Class)]
     class Password : Attribute

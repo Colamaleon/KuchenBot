@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Discord.Commands;
 using Discord;
 
-namespace DiscBot.Commands
+namespace DiscBot.Actions
 {
     /// <summary>
     /// The baseclass for all of GLaDOS' commands.

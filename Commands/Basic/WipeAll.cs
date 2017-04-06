@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 using Discord.Commands;
 using Discord;
 
-using DiscBot.Commands.Attributes;
+using DiscBot.Actions.Attributes;
 
-namespace DiscBot.Commands.Basic
+namespace DiscBot.Actions.Basic
 {
     [Attributes.Password("sure!")]
     class WipeAll : GLaDOSCommand

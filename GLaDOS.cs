@@ -37,7 +37,7 @@ namespace DiscBot
                 obj.LogLevel = LogSeverity.Info;
                 obj.LogHandler = Log;
             });
-
+            
             //Set up commands
             discord.UsingCommands(x =>
             {
@@ -141,7 +141,7 @@ namespace DiscBot
 
         protected void RegisterCommands()
         {
-            new DiscBot.Commands.CommandLine.RegisterToken().Register(discord.GetService<CommandService>(), manager);
+            new DiscBot.Actions.CommandLine.RegisterToken().Register(discord.GetService<CommandService>(), manager);
         }
 
         protected void CommandListener()

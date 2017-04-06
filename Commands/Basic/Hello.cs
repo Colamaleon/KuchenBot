@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Discord.Commands;
 using Discord;
 
-namespace DiscBot.Commands.Basic
+namespace DiscBot.Actions.Basic
 {
     class Hello : GLaDOSCommand
     {
