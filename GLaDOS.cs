@@ -2,9 +2,9 @@
 using Discord.Commands;
 
 using System;
-using KuchenBot.Commands;
+using DiscBot.Commands;
 
-namespace KuchenBot
+namespace DiscBot
 {
     public class GLaDOS
     {
@@ -31,6 +31,8 @@ namespace KuchenBot
                 obj.LogHandler = Log;
             });
 
+            // Welcome
+            Welcome();
 
             //Set up commands
             discord.UsingCommands(x =>
@@ -47,6 +49,11 @@ namespace KuchenBot
 
             // Login
             Login();
+        }
+
+        private void Welcome()
+        {
+            Console.Write(GLaDOS.UI.)
         }
 
         protected void Login()

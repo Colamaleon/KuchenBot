@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Discord.Commands;
 using Discord;
 
-namespace KuchenBot.Commands.Attributes
+namespace DiscBot.Commands.Attributes
 {
     /// <summary>
     /// 

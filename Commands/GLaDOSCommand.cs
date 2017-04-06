@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Discord.Commands;
 using Discord;
 
-namespace KuchenBot.Commands
+namespace DiscBot.Commands
 {
     /// <summary>
     /// The baseclass for all of GLaDOS' commands.

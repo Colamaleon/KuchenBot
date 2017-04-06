@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Discord.Commands;
 using Discord;
 
-namespace KuchenBot.Commands.ShitsAndGiggles
+namespace DiscBot.Commands.ShitsAndGiggles
 {
     class LetsBeFriends : GLaDOSCommand
     {

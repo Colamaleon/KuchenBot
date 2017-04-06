@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Discord.Commands;
 using Discord;
 
-namespace KuchenBot.Commands.Basic
+namespace DiscBot.Commands.Basic
 {
     class WipeAll
     {
