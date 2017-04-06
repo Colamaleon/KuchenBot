@@ -14,5 +14,6 @@ namespace DiscBot.Actions
     /// </summary>
     public class GLaDOSCommand
     {
+
     }
 }

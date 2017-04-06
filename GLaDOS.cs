@@ -141,7 +141,37 @@ namespace DiscBot
 
         protected void RegisterCommands()
         {
-            new DiscBot.Actions.CommandLine.RegisterToken().Register(discord.GetService<CommandService>(), manager);
+            new DiscBot.Actions.Terminal.RegisterToken().Register(discord.GetService<CommandService>(), manager);
+
+            /*
+            discord.AddService<Testservice>(new Testservice());
+            discord.AddService<TestServiceB>(new TestServiceB());
+
+            discord.GetService<CommandService>().CreateCommand("gaehn")
+                .Parameter("b", ParameterType.Required)
+                .Do( (e) =>
+                {
+                    discord.GetService<Testservice>().Add(e.User);
+                    discord.GetService<TestServiceB>().Add(177809903593717760);
+
+                    if (e.GetArg("b").Equals("b"))
+                    {
+                        foreach (ulong x in discord.GetService<TestServiceB>().UserIds)
+                        {
+                            e.Channel.SendMessage(x.ToString());
+                        }
+                    }
+                    else
+                    {
+                        foreach (ulong x in discord.GetService<Testservice>().UserIds)
+                        {
+                            e.Channel.SendMessage(x.ToString());
+                        }
+                    }
+
+
+                });
+                */
         }
 
         protected void CommandListener()

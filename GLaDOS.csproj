@@ -65,14 +65,17 @@
     <Compile Include="Commands\Basic\DoYouLoveMe.cs" />
     <Compile Include="Commands\Basic\Hello.cs" />
     <Compile Include="Commands\Basic\WipeAll.cs" />
-    <Compile Include="Commands\CommandLine\Token.cs" />
     <Compile Include="Commands\ShitsAndGiggles\LetsBeFriends.cs" />
     <Compile Include="Commands\GLaDOSCommand.cs" />
     <Compile Include="Commands\RestrictionType.cs" />
+    <Compile Include="Commands\Terminal\TerminalCommand.cs" />
+    <Compile Include="Commands\Terminal\Token.cs" />
     <Compile Include="GLaDOSManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GLaDOS.cs" />
+    <Compile Include="Testservice.cs" />
+    <Compile Include="TestServiceB.cs" />
     <Compile Include="UI\AsciiArt.cs" />
   </ItemGroup>
   <ItemGroup>
