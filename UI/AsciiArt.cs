@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace DiscBot.UI
 {
-    public class AsciiArt
+    public static class AsciiArt
     {
         public static string GetCake()
         {
             return
-@"            ,:/+/-
+@"             ,:/+/-
             / M /              .,-=;//;-
        .:/= ; MH /,    ,=/ +%$XH @MM#@:
       -$##@+$###@H@MMM#######H:.    -/H#
@@ -31,6 +31,17 @@ M###################@%=           =+@MH%
      .= +HM#######M+/+HM@+=.
          ,:/% XM####H/.
               ,.:= -.";
+        }
+
+        public static string GetGlados()
+        {
+            return 
+@"   _____ _           _____   ____   _____ 
+  / ____| |         |  __ \ / __ \ / ____|
+ | |  __| |     __ _| |  | | |  | | (___  
+ | | |_ | |    / _` | |  | | |  | |\___ \ 
+ | |__| | |___| (_| | |__| | |__| |____) |
+  \_____|______\__,_|_____/ \____/|_____/";
         }
     }
 }

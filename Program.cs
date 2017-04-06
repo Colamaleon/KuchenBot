@@ -9,7 +9,6 @@ namespace DiscBot
 
 		public static void Main(string[] args)
         {
-            Console.WriteLine("Initialize");
             glados = new GLaDOS();
 		}
     }
