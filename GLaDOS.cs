@@ -66,9 +66,9 @@ namespace KuchenBot
         }
 
         private static string AppDataPath
-        { get { return Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData); } }
+        { get { return Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\GLaDOS"; } }
         private static string TokenPath
-        { get { return AppDataPath + "\\GLaDOS\\localtoken.txt"; } }
+        { get { return AppDataPath + "\\localtoken.txt"; } }
         private static bool TokenExists
         { get { return System.IO.File.Exists(TokenPath); } }
         protected void CommandListener()
