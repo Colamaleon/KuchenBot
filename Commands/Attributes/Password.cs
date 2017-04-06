@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Discord.Commands;
 using Discord;
 
-namespace KuchenBot.Commands.CommandAttributes
+namespace KuchenBot.Commands.Attributes
 {
     [AttributeUsage(AttributeTargets.Class)]
     class Password : Attribute
