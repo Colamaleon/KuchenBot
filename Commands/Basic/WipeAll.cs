@@ -14,14 +14,14 @@ namespace DiscBot.Commands.Basic
     [Attributes.Password("sure!")]
     class WipeAll
     {
-        public static void Register(CommandService service)
+        public void Register(CommandService service)
         {
             service.CreateCommand("wipeall")
                 .Description("wipes all the messages in the current channel")
                 .Do(Run);
         }
 
-        public static async Task Run(CommandEventArgs args)
+        public async Task Run(CommandEventArgs args)
         {
             if(((Password)Attribute.GetCustomAttribute(typeof(WipeAll), typeof(Password))).CheckPass(args))
             {

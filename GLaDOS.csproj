@@ -59,6 +59,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\Attributes\ConsoleOnly.cs" />
     <Compile Include="Commands\Attributes\Password.cs" />
     <Compile Include="Commands\Attributes\Restrict.cs" />
     <Compile Include="Commands\Basic\DoYouLoveMe.cs" />

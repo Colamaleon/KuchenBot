@@ -2,6 +2,7 @@
 using Discord.Commands;
 
 using System;
+using System.Threading.Tasks;
 
 using DiscBot.UI;
 
@@ -10,7 +11,7 @@ namespace DiscBot
     public class GLaDOS
     {
         #region Attributes
-
+        
         private static string AppDataPath
         { get { return Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\GLaDOS"; } }
         private static string TokenPath
@@ -19,11 +20,16 @@ namespace DiscBot
         { get { return System.IO.File.Exists(TokenPath); } }
 
         DiscordClient discord;
-        
+        GLaDOSManager manager;
+
         #endregion
 
         #region Init
 
+        public async Task Test(CommandEventArgs args)
+        {
+
+        }
         public GLaDOS()
         {
             discord = new DiscordClient((obj) =>
@@ -47,6 +53,9 @@ namespace DiscBot
             {
                 RegisterLocalToken();
             }
+
+            // Register all commands
+            RegisterCommands();
 
             // Login
             Login();
@@ -128,7 +137,12 @@ namespace DiscBot
 
         #endregion
 
-        #region CommandLine
+        #region Commands
+
+        protected void RegisterCommands()
+        {
+            new DiscBot.Commands.CommandLine.RegisterToken().Register(discord.GetService<CommandService>(), manager);
+        }
 
         protected void CommandListener()
         {

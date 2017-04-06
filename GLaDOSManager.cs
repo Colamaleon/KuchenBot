@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using DiscBot.Commands;
+
 namespace DiscBot
 {
     class GLaDOSManager
@@ -15,6 +17,10 @@ namespace DiscBot
             gladosInstance = instance;
         }
 
-        //public GLaDOS GetGlados(
+        public GLaDOS GetGlados(GLaDOSCommand c)
+        {
+            // TODO check wether to allow access
+            return gladosInstance;
+        }
     }
 }
