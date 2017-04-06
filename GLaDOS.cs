@@ -30,16 +30,19 @@ namespace DiscBot
                 obj.LogHandler = Log;
             });
 
-            // Welcome
-            Welcome();
-
             //Set up commands
             discord.UsingCommands(x =>
             {
                 x.PrefixChar = '!';
                 x.AllowMentionPrefix = false;
             });
-            
+
+            // Welcome
+            Welcome();
+
+            // Try booting
+            Console.WriteLine("Booting GLaDOS...");
+
             // Check for local token
             if (!TokenExists)
             {
@@ -52,7 +55,12 @@ namespace DiscBot
 
         private void Welcome()
         {
-            //Console.Write(DiscBot.)
+            Console.WriteLine();
+            Console.Write(DiscBot.UI.AsciiArt.GetCake());
+            Console.WriteLine();
+            Console.WriteLine("Welcome to the Games Lab and Developer Operating System!");
+            Console.WriteLine();
+            Console.WriteLine();
         }
 
         protected void Login()
