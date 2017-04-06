@@ -11,7 +11,7 @@ namespace DiscBot.Commands.Basic
 {
     class DoYouLoveMe : GLaDOSCommand
     {
-        public static void Register(CommandService service)
+        public void Register(CommandService service)
         {
             service.CreateCommand("doyouloveme")
                 .Alias(new string[] { "doyouloveme?" })
@@ -19,7 +19,7 @@ namespace DiscBot.Commands.Basic
                 .Do(Run);
         }
 
-        public static async Task Run(CommandEventArgs args)
+        public async Task Run(CommandEventArgs args)
         {
             await args.Channel.SendMessage("I am a robot, and therefore incapable of experiencing emotions such as love.\nI am sorry to disappoint you.");
         }

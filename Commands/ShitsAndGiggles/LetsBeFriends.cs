@@ -12,7 +12,7 @@ namespace DiscBot.Commands.ShitsAndGiggles
     class LetsBeFriends : GLaDOSCommand
     {
 
-        public static void Register(CommandService service)
+        public void Register(CommandService service)
         {
             service.CreateCommand("letsbefriends")
                 .Alias(new string[] { "areyoumyfriend?", "wannabefriends?" })
@@ -20,7 +20,7 @@ namespace DiscBot.Commands.ShitsAndGiggles
                 .Do(Run);
         }
 
-        public static async Task Run(CommandEventArgs args)
+        public async Task Run(CommandEventArgs args)
         {
             await args.Channel.SendMessage(args.User.NicknameMention + ", DENIED");
         }

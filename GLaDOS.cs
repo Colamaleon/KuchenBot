@@ -48,8 +48,13 @@ namespace DiscBot
                 RegisterLocalToken();
             }
 
+            // Register Commands
+            var comService = discord.GetService<CommandService>();
+            Commands.Basic.WipeAll.Register(comService);
+
             // Login
             Login();
+
         }
 
         private void Welcome()
