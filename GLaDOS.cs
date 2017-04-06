@@ -6,8 +6,8 @@ using KuchenBot.Commands;
 
 namespace KuchenBot
 {
-	public class GLaDOS
-	{
+    public class GLaDOS
+    {
         #region Attributes
 
         DiscordClient discord;
@@ -16,20 +16,20 @@ namespace KuchenBot
         #region init
 
         public GLaDOS()
-		{
-			discord = new DiscordClient((obj) => 
-			{
-				obj.LogLevel = LogSeverity.Info;
-				obj.LogHandler = Log;
-			});
+        {
+            discord = new DiscordClient((obj) =>
+            {
+                obj.LogLevel = LogSeverity.Info;
+                obj.LogHandler = Log;
+            });
 
 
             //Set up commands
-			discord.UsingCommands(x =>
-			{
-				x.PrefixChar 			= '!';
-				x.AllowMentionPrefix 	= false;
-			});
+            discord.UsingCommands(x =>
+            {
+                x.PrefixChar = '!';
+                x.AllowMentionPrefix = false;
+            });
 
             CreateCommands();
 
@@ -80,7 +80,7 @@ namespace KuchenBot
                 string command = Console.ReadLine();
                 if (command == "exit")
                 {
-                    await discord.Disconnect();
+                    Disconnect();
                     runCommands = false;
                     continue;
                 }
@@ -89,7 +89,7 @@ namespace KuchenBot
                     string token = command.Replace("registertoken ", "");
                     SetLocalToken(token);
 
-                    await discord.Disconnect();
+                    Disconnect();
                     Console.WriteLine("");
                     Login();
 
@@ -140,9 +140,14 @@ namespace KuchenBot
         }
 
         private void Log(object sender, LogMessageEventArgs args)
-		{
-			Console.WriteLine(args.Message);
-		}
+        {
+            Console.WriteLine(args.Message);
+        }
+
+        public async void Disconnect()
+        {
+            await discord.Disconnect();
+        }
 
         #endregion
         #region createCommands
@@ -158,6 +163,5 @@ namespace KuchenBot
         }
 
         #endregion
-
     }
 }
