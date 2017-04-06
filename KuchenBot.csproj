@@ -56,13 +56,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\ShitsAndGiggles\DoYouLoveMeCommand.cs" />
+    <Compile Include="Commands\Basic.cs" />
+    <Compile Include="Commands\CommandUtil.cs" />
+    <Compile Include="Commands\DMOnly.cs" />
+    <Compile Include="Commands\GLaDOSCommand.cs" />
+    <Compile Include="Commands\ShitsAndGiggles.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GLaDOS.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

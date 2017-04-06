@@ -2,6 +2,7 @@
 using Discord.Commands;
 
 using System;
+using KuchenBot.Commands;
 
 namespace KuchenBot
 {
@@ -71,7 +72,7 @@ namespace KuchenBot
         { get { return AppDataPath + "\\localtoken.txt"; } }
         private static bool TokenExists
         { get { return System.IO.File.Exists(TokenPath); } }
-        protected void CommandListener()
+        protected async void CommandListener()
         {
             bool runCommands = true;
             while (runCommands)
@@ -79,7 +80,7 @@ namespace KuchenBot
                 string command = Console.ReadLine();
                 if (command == "exit")
                 {
-                    discord.Disconnect();
+                    await discord.Disconnect();
                     runCommands = false;
                     continue;
                 }
@@ -88,7 +89,7 @@ namespace KuchenBot
                     string token = command.Replace("registertoken ", "");
                     SetLocalToken(token);
 
-                    discord.Disconnect();
+                    await discord.Disconnect();
                     Console.WriteLine("");
                     Login();
 
@@ -148,57 +149,12 @@ namespace KuchenBot
 
         private void CreateCommands()
         {
-            var commands = discord.GetService<CommandService>();
+            var comService = discord.GetService<CommandService>();
 
-            //Register new Commands here
-
-            #region BaseCommands
-
-            commands.CreateCommand("hello")
-                .Do(async (e) =>
-                {
-                    await e.Channel.SendMessage("Welcome," + e.User.NicknameMention + ",\nMy name is GLaDOS, the \n\n**G**ames \n**L**ab \n**a**nd \n**D**eveloper \n**O**perating \n**S**ystem. \n\nNice to meet you.");
-                });
-
-            commands.CreateCommand("doyouloveme?")
-                .Do(async (e) =>
-                {
-                    await e.Channel.SendMessage("I am a robot, and therefore unable to experience emotions such as love.\nI am sorry to disappoint you.");
-                });
-
-            commands.CreateCommand("status")
-                .Do(async (e) =>
-                {
-                    await e.Channel.SendMessage("alive");
-                });
-
-            commands.CreateCommand("wipeAll")
-                .Do(async (e) =>
-                {
-                    Console.WriteLine("Deleting Messages...");
-                    Message[] messages = await e.Channel.DownloadMessages();
-
-                    while(messages.Length > 0)
-                    {
-                        messages = await e.Channel.DownloadMessages();
-                        await e.Channel.DeleteMessages(messages);
-                    }
-                    Console.WriteLine("Deletion Complete...");
-
-                    await e.Channel.SendMessage("Wiped Logs... scrub.");
-                });
-
-            #endregion
-            #region KuchenCommands
-
-            commands.CreateCommand("kuchen")
-                .Do(async (e) =>
-                {
-                    await e.Channel.SendMessage("alive");
-                });
-
-            #endregion
-
+            //Put your Command Classes here
+            Basic.Init(comService);
+            ShitsAndGiggles.Init(comService);
+            DMOnly.Init(comService);
         }
 
         #endregion
