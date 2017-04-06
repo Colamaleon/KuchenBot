@@ -34,3 +34,5 @@ D:\Users\Christopher\Documents\KuchenBot\bin\Debug\Nito.AsyncEx.xml
 D:\Users\Christopher\Documents\KuchenBot\bin\Debug\Nito.AsyncEx.Enlightenment.xml
 D:\Users\Christopher\Documents\KuchenBot\bin\Debug\RestSharp.xml
 D:\Users\Christopher\Documents\KuchenBot\obj\x86\Debug\KuchenBot.csprojResolveAssemblyReference.cache
+C:\Users\Christopher Bernal\Documents\KuchenBot\obj\x86\Debug\KuchenBot.exe
+C:\Users\Christopher Bernal\Documents\KuchenBot\obj\x86\Debug\KuchenBot.pdb
