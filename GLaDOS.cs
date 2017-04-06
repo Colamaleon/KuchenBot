@@ -54,10 +54,10 @@ namespace DiscBot
 
         private void Welcome()
         {
-            Console.WriteLine(UI.AsciiArt.GetHeader());
-            Console.WriteLine(UI.AsciiArt.PadForConsole(UI.AsciiArt.GetCake()));
-            Console.WriteLine(UI.AsciiArt.GetGlados());
-            Console.WriteLine(UI.AsciiArt.GetCloser());
+            Console.WriteLine(AsciiArt.GetHeader());
+            Console.WriteLine(AsciiArt.PadForConsole(UI.AsciiArt.GetCake()));
+            Console.WriteLine(AsciiArt.GetGlados());
+            Console.WriteLine(AsciiArt.GetCloser());
             Console.WriteLine();
         }
 
@@ -83,6 +83,52 @@ namespace DiscBot
                 RegisterLocalToken();
             }
         }
+
+        protected string GetLocalToken()
+        {
+            try
+            {
+                return System.IO.File.ReadAllText(TokenPath);
+            }
+            catch (Exception ex)
+            {
+                return "";
+            }
+        }
+
+        protected bool SetLocalToken(string token)
+        {
+            try
+            {
+                if (!System.IO.Directory.Exists(AppDataPath))
+                {
+                    System.IO.Directory.CreateDirectory(AppDataPath);
+                }
+                System.IO.StreamWriter file = new System.IO.StreamWriter(TokenPath);
+                file.WriteLine(token);
+                file.Close();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        protected void RegisterLocalToken()
+        {
+            Console.WriteLine("Please enter the bot token");
+            string token = Console.ReadLine();
+            SetLocalToken(token);
+            Console.WriteLine("");
+
+            Login();
+        }
+
+        #endregion
+
+        #region CommandLine
 
         protected void CommandListener()
         {
@@ -111,44 +157,12 @@ namespace DiscBot
                 Console.WriteLine("No such command");
             }
         }
-        protected string GetLocalToken()
-        {
-            try
-            {
-                return System.IO.File.ReadAllText(TokenPath);
-            }
-            catch (Exception ex)
-            {
-                return "";
-            }
-        }
-        protected bool SetLocalToken(string token)
-        {
-            try
-            {
-                if (!System.IO.Directory.Exists(AppDataPath))
-                {
-                    System.IO.Directory.CreateDirectory(AppDataPath);
-                }
-                System.IO.StreamWriter file = new System.IO.StreamWriter(TokenPath);
-                file.WriteLine(token);
-                file.Close();
 
-                return true;
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
-        }
-        protected void RegisterLocalToken()
-        {
-            Console.WriteLine("Please enter the bot token");
-            string token = Console.ReadLine();
-            SetLocalToken(token);
-            Console.WriteLine("");
+        #endregion
 
-            Login();
+        public async void Disconnect()
+        {
+            await discord.Disconnect();
         }
 
         private void Log(object sender, LogMessageEventArgs args)
@@ -156,11 +170,5 @@ namespace DiscBot
             Console.WriteLine(args.Message);
         }
 
-        public async void Disconnect()
-        {
-            await discord.Disconnect();
-        }
-
-        #endregion
     }
 }

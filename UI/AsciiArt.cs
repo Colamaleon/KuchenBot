@@ -21,6 +21,39 @@ namespace DiscBot.UI
 string.Format(@"---------------------------------------------------------------------- V. {0} ----", version).Remove(0, version.Length);
         }
 
+        public static string PadForConsole(string source, int charsPerLine = 80)
+        {
+            string[] lines = source.Split('\n');
+            int longestLineLength = 0;
+
+            for (int i = 0; i < lines.Length; i++)
+            {
+                lines[i].TrimEnd(); //ignore trailing whitespace
+                longestLineLength = Math.Max(longestLineLength, lines[i].Length); // find the longest line
+            }
+
+            int leftwhitespace = (int)Math.Floor((double)((charsPerLine - longestLineLength) / 2D));
+            if (leftwhitespace < 0)
+            {
+                //art is too long.
+                return source;
+            }
+            else
+            {
+                string result = "";
+
+                for (int a = 0; a < lines.Length; a++)
+                {
+                    lines[a] = lines[a].PadLeft(leftwhitespace + lines[a].Length);
+                    result += lines[a] + '\n';
+                }
+
+                return result.TrimEnd('\n');
+            }
+        }
+
+        #region Art
+
         public static string GetCake()
         {
             return
@@ -59,38 +92,7 @@ M###################@%=           =+@MH%
   #########    ##########    ###### ###    #########    ##########  #########";
         }
 
-        public static string PadForConsole(string source, int charsPerLine = 80)
-        {
-            string[] lines = source.Split('\n');
-            int longestLineLength = 0;
+        #endregion
 
-            for (int i = 0; i < lines.Length; i++)
-            {
-                lines[i].TrimEnd(); //ignore trailing whitespace
-                longestLineLength = Math.Max(longestLineLength, lines[i].Length); // find the longest line
-            }
-
-            int leftwhitespace = (int)Math.Floor((double)((charsPerLine - longestLineLength) / 2D));
-            if (leftwhitespace < 0)
-            {
-                //art is too long.
-                return source;
-            }
-            else
-            {
-                string result = "";
-
-                for (int a = 0; a < lines.Length; a++)
-                {
-                    for (int b = 0; b < leftwhitespace; b++)
-                    {
-                        lines[a] = " " + lines[a];
-                    }
-                    result += lines[a] + '\n';
-                }
-
-                return result.TrimEnd('\n');
-            }
-        }
     }
 }

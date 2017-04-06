@@ -7,8 +7,11 @@ using System.Threading.Tasks;
 using Discord.Commands;
 using Discord;
 
+using DiscBot.Commands.Attributes;
+
 namespace DiscBot.Commands.Basic
 {
+    [Attributes.Password("sure!")]
     class WipeAll
     {
         public static void Register(CommandService service)
@@ -20,7 +23,14 @@ namespace DiscBot.Commands.Basic
 
         public static async Task Run(CommandEventArgs args)
         {
-            Console.WriteLine("Deleting Messages...");
+            if(((Password)Attribute.GetCustomAttribute(typeof(WipeAll), typeof(Password))).CheckPass(args))
+            {
+                Console.WriteLine("Correct Pass!");
+            }else
+            {
+                Console.WriteLine("Wrong Pass!");
+            }
+
             Message[] messages = await args.Channel.DownloadMessages();
 
             while (messages.Length > 0)
