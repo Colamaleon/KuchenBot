@@ -54,10 +54,10 @@ namespace DiscBot
 
         private void Welcome()
         {
-            Console.Write(AsciiArt.GetCake());
-            Console.WriteLine();
-            Console.WriteLine(AsciiArt.GetGlados());
-            Console.WriteLine();
+            Console.WriteLine(UI.AsciiArt.GetHeader());
+            Console.WriteLine(UI.AsciiArt.PadForConsole(UI.AsciiArt.GetCake()));
+            Console.WriteLine(UI.AsciiArt.GetGlados());
+            Console.WriteLine(UI.AsciiArt.GetCloser());
             Console.WriteLine("Booting...");
         }
 
