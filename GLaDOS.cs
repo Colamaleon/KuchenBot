@@ -146,7 +146,8 @@ namespace DiscBot
         protected void RegisterCommands()
         {
             //new DiscBot.Actions.CommandLine.RegisterToken().Register(discord.GetService<CommandService>(), manager);
-            //Actions.ShitsAndGiggles.Sing.Register(discord.GetService<CommandService>());
+            Actions.ShitsAndGiggles.Sing.Register(discord.GetService<CommandService>());
+            Actions.ShitsAndGiggles.Cake.Register(discord.GetService<CommandService>());
         }
 
         protected void CommandListener()

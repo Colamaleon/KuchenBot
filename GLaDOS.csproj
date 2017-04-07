@@ -68,6 +68,7 @@
     <Compile Include="Actions\GLaDOSPermissionCheck.cs" />
     <Compile Include="Actions\IsDirectMessageChecker.cs" />
     <Compile Include="Actions\PermissionChecker.cs" />
+    <Compile Include="Actions\ShitsAndGiggles\Cake.cs" />
     <Compile Include="Actions\ShitsAndGiggles\Sing.cs" />
     <Compile Include="Actions\Terminal\TerminalCommand.cs" />
     <Compile Include="Actions\Terminal\Token.cs" />
