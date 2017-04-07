@@ -12,10 +12,11 @@ namespace DiscBot.Actions
     /// <summary>
     /// Check if the command was posted in a direct message channel
     /// </summary>
-    class IsDirectMessageChecker : IPermissionChecker
+    class IsDirectMessageChecker : Discord.Commands.Permissions.IPermissionChecker
     {
-        public bool CanRun(Command command, User user, Channel channel)
+        public bool CanRun(Command command, User user, Channel channel, out string errorMessage)
         {
+            errorMessage = "";
             return channel == user.PrivateChannel;
         }
     }

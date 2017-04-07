@@ -11,27 +11,19 @@ using DiscBot.Actions.Attributes;
 
 namespace DiscBot.Actions.Basic
 {
-    [Attributes.Password("sure!")]
     class WipeAll : GLaDOSCommand
     {
-        public void Register(CommandService service)
+        public static void Register(CommandService service)
         {
             service.CreateCommand("wipeall")
-                .Alias(new string[] { "fullwipe"})
+                .Alias(new string[] {"fullwipe"})
+                .Parameter("pass", ParameterType.Required)
                 .Description("wipes all the messages in the current channel")
                 .Do(Run);
         }
 
-        public async Task Run(CommandEventArgs args)
+        public static async Task Run(CommandEventArgs args)
         {
-            if(((Password)Attribute.GetCustomAttribute(typeof(WipeAll), typeof(Password))).CheckPass(args))
-            {
-                Console.WriteLine("Correct Pass!");
-            }else
-            {
-                Console.WriteLine("Wrong Pass!");
-            }
-
             Message[] messages = await args.Channel.DownloadMessages();
 
             while (messages.Length > 0)

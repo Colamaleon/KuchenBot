@@ -12,11 +12,13 @@ namespace DiscBot.Actions
     /// <summary>
     /// Base Permission checker. Determines if a user is allowed to run commands at all.
     /// </summary>
-    class GLaDOSPermissionCheck : IPermissionChecker
+    class GLaDOSPermissionCheck : Discord.Commands.Permissions.IPermissionChecker
     {
-        public bool CanRun(Command command, User user, Channel channel)
+        public bool CanRun(Command command, User user, Channel channel, out string errorMessage)
         {
+            errorMessage = "";
             return true;
         }
+
     }
 }

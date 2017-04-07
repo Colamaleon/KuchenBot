@@ -9,10 +9,11 @@ using Discord.Commands;
 
 namespace DiscBot.Actions
 {
-    class UserPermissionCheck : IPermissionChecker
+    class UserPermissionCheck : Discord.Commands.Permissions.IPermissionChecker
     {
-        public bool CanRun(Command command, User user, Channel channel)
+        public bool CanRun(Command command, User user, Channel channel, out string errorMessage)
         {
+            errorMessage = "";
             return false;
         }
     }
