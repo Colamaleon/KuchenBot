@@ -59,18 +59,26 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\Attributes\ConsoleOnly.cs" />
-    <Compile Include="Commands\Attributes\Password.cs" />
-    <Compile Include="Commands\Attributes\Restrict.cs" />
-    <Compile Include="Commands\Basic\DoYouLoveMe.cs" />
-    <Compile Include="Commands\Basic\Hello.cs" />
-    <Compile Include="Commands\Basic\WipeAll.cs" />
-    <Compile Include="Commands\Terminal\TerminalCommand.cs" />
-    <Compile Include="Commands\Terminal\Token.cs" />
-    <Compile Include="Commands\ShitsAndGiggles\LetsBeFriends.cs" />
-    <Compile Include="Commands\GLaDOSCommand.cs" />
-    <Compile Include="Commands\RestrictionType.cs" />
+    <Compile Include="Actions\Attributes\ConsoleOnly.cs" />
+    <Compile Include="Actions\Attributes\Password.cs" />
+    <Compile Include="Actions\Attributes\Restrict.cs" />
+    <Compile Include="Actions\Basic\DoYouLoveMe.cs" />
+    <Compile Include="Actions\Basic\Hello.cs" />
+    <Compile Include="Actions\Basic\WipeAll.cs" />
+    <Compile Include="Actions\GLaDOSPermissionCheck.cs" />
+    <Compile Include="Actions\IsDirectMessageChecker.cs" />
+    <Compile Include="Actions\PermissionChecker.cs" />
+    <Compile Include="Actions\ShitsAndGiggles\Sing.cs" />
+    <Compile Include="Actions\Terminal\TerminalCommand.cs" />
+    <Compile Include="Actions\Terminal\Token.cs" />
+    <Compile Include="Actions\ShitsAndGiggles\LetsBeFriends.cs" />
+    <Compile Include="Actions\GLaDOSCommand.cs" />
+    <Compile Include="Actions\RestrictionType.cs" />
+    <Compile Include="Actions\UserPermissionCheck.cs" />
     <Compile Include="GLaDOSManager.cs" />
+    <Compile Include="IOModule.cs" />
+    <Compile Include="MessageStrings.cs" />
+    <Compile Include="NonCommandActions\MensaHandler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GLaDOS.cs" />

@@ -5,6 +5,7 @@ using System;
 using System.Threading.Tasks;
 
 using DiscBot.UI;
+using System.Collections.Generic;
 
 namespace DiscBot
 {
@@ -47,7 +48,7 @@ namespace DiscBot
 
             // Welcome
             Welcome();
-            
+
             // Check for local token
             if (!TokenExists)
             {
@@ -56,6 +57,9 @@ namespace DiscBot
 
             // Register all commands
             RegisterCommands();
+
+            //Add the message logger
+            discord.MessageReceived += OnMessage;
 
             // Login
             Login();
@@ -142,6 +146,7 @@ namespace DiscBot
         protected void RegisterCommands()
         {
             //new DiscBot.Actions.CommandLine.RegisterToken().Register(discord.GetService<CommandService>(), manager);
+            //Actions.ShitsAndGiggles.Sing.Register(discord.GetService<CommandService>());
         }
 
         protected void CommandListener()
@@ -167,7 +172,6 @@ namespace DiscBot
 
                     continue;
                 }
-
                 Console.WriteLine("No such command");
             }
         }
@@ -182,6 +186,14 @@ namespace DiscBot
         private void Log(object sender, LogMessageEventArgs args)
         {
             Console.WriteLine(args.Message);
+        }
+
+        private void OnMessage(object sender, MessageEventArgs args)
+        {
+            //TODO: Log commands for crash tracking
+            NonCommandActions.MensaHandler.HandleMessage(args);
+
+            Console.WriteLine(args.Message.RawText);
         }
 
     }

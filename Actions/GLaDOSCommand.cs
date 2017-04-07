@@ -12,7 +12,15 @@ namespace DiscBot.Actions
     /// <summary>
     /// The baseclass for all of GLaDOS' commands.
     /// </summary>
-    public class GLaDOSCommand
+    abstract class GLaDOSCommand
     {
+
+        protected IPermissionChecker permissionChecker;
+
+        public static void Register(GLaDOSCommand com)
+        {
+
+        }
+
     }
 }
