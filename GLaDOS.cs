@@ -13,13 +13,6 @@ namespace DiscBot
     {
         #region Attributes
         
-        private static string AppDataPath
-        { get { return Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\GLaDOS"; } }
-        private static string TokenPath
-        { get { return AppDataPath + "\\localtoken.txt"; } }
-        private static bool TokenExists
-        { get { return System.IO.File.Exists(TokenPath); } }
-
         DiscordClient discord;
         GLaDOSManager manager;
 
@@ -50,7 +43,7 @@ namespace DiscBot
             Welcome();
 
             // Check for local token
-            if (!TokenExists)
+            if (!IOModule.TokenExists)
             {
                 RegisterLocalToken();
             }
@@ -101,7 +94,7 @@ namespace DiscBot
         {
             try
             {
-                return System.IO.File.ReadAllText(TokenPath);
+                return System.IO.File.ReadAllText(IOModule.TokenPath);
             }
             catch (Exception ex)
             {
@@ -113,11 +106,11 @@ namespace DiscBot
         {
             try
             {
-                if (!System.IO.Directory.Exists(AppDataPath))
+                if (!System.IO.Directory.Exists(IOModule.AppDataPath))
                 {
-                    System.IO.Directory.CreateDirectory(AppDataPath);
+                    System.IO.Directory.CreateDirectory(IOModule.AppDataPath);
                 }
-                System.IO.StreamWriter file = new System.IO.StreamWriter(TokenPath);
+                System.IO.StreamWriter file = new System.IO.StreamWriter(IOModule.TokenPath);
                 file.WriteLine(token);
                 file.Close();
 
@@ -148,6 +141,7 @@ namespace DiscBot
             //new DiscBot.Actions.CommandLine.RegisterToken().Register(discord.GetService<CommandService>(), manager);
             Actions.ShitsAndGiggles.Sing.Register(discord.GetService<CommandService>());
             Actions.ShitsAndGiggles.Cake.Register(discord.GetService<CommandService>());
+            Actions.Basic.GeneratePass.Register(discord.GetService<CommandService>());
         }
 
         protected void CommandListener()

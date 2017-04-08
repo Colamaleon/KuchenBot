@@ -16,7 +16,9 @@ namespace DiscBot.Actions.Basic
         {
             //TODO Check if this is Run in a pm
             service.CreateCommand("generatepassword")
+                .AddCheck(new IsDirectMessageChecker())
                 .Alias(new string[] { "genpass", "passpls", "getpass"})
+                .Parameter("pass", ParameterType.Required)
                 .Description("Generate a user specific password. Use this pass to run various commands that require them.")
                 .Do(Run);
         }

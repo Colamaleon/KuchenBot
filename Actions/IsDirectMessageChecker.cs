@@ -17,7 +17,15 @@ namespace DiscBot.Actions
         public bool CanRun(Command command, User user, Channel channel, out string errorMessage)
         {
             errorMessage = "";
-            return channel == user.PrivateChannel;
+            if (channel == user.PrivateChannel)
+            {
+                return true;
+            }else
+            {
+                errorMessage = "This command can only be run via a direct message";
+                channel.SendMessage(errorMessage);
+                return false;
+            }
         }
     }
 }

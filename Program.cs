@@ -9,6 +9,9 @@ namespace DiscBot
 
 		public static void Main(string[] args)
         {
+            Console.WindowHeight = 55;
+
+
             glados = new GLaDOS();
 		}
     }
