@@ -17,7 +17,7 @@ namespace DiscBot.Actions
 
         public PasswordChecker(string pass, Func<CommandEventArgs, Task> func)
         {
-            password = pass;
+            this.password = pass;
             this.func = func;
         }
 

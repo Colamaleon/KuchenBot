@@ -68,6 +68,7 @@
     <Compile Include="Actions\Basic\WipeAll.cs" />
     <Compile Include="Actions\GLaDOSPermissionCheck.cs" />
     <Compile Include="Actions\IsDirectMessageChecker.cs" />
+    <Compile Include="Actions\ParameterChecker.cs" />
     <Compile Include="Actions\PasswordChecker.cs" />
     <Compile Include="Actions\ShitsAndGiggles\Cake.cs" />
     <Compile Include="Actions\ShitsAndGiggles\Sing.cs" />
