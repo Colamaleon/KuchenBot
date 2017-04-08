@@ -70,6 +70,7 @@
     <Compile Include="Actions\IsDirectMessageChecker.cs" />
     <Compile Include="Actions\ParameterChecker.cs" />
     <Compile Include="Actions\PasswordChecker.cs" />
+    <Compile Include="Actions\ShitsAndGiggles\OhNo.cs" />
     <Compile Include="Actions\ShitsAndGiggles\Cake.cs" />
     <Compile Include="Actions\ShitsAndGiggles\Sing.cs" />
     <Compile Include="Actions\ShitsAndGiggles\LetsBeFriends.cs" />

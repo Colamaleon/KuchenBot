@@ -147,6 +147,7 @@ namespace DiscBot
             //new DiscBot.Actions.CommandLine.RegisterToken().Register(discord.GetService<CommandService>(), manager);
             Actions.ShitsAndGiggles.Sing.Register(cs);
             Actions.ShitsAndGiggles.Cake.Register(cs);
+            Actions.ShitsAndGiggles.OhNo.Register(cs);
 
             Actions.Terminal.GetToken.Register(cs, manager);
             Actions.Terminal.SetToken.Register(cs, manager);
@@ -206,6 +207,5 @@ namespace DiscBot
 
             Console.WriteLine(args.Message.RawText);
         }
-
     }
 }
