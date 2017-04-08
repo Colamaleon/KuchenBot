@@ -10,18 +10,17 @@ using Discord.Commands.Permissions;
 
 namespace DiscBot.Actions
 {
-    class ParameterChecker
+    class ParameterChecker : CustomChecker
     {
         string parameter;
-        Func<CommandEventArgs, Task> func;
 
-        public ParameterChecker(string parameter, Func<CommandEventArgs, Task> func)
+        public ParameterChecker(string parameter, Func<CommandEventArgs, Task> func) : base(func)
         {
             this.parameter = parameter;
-            this.func = func;
+            this.successAction = func;
         }
 
-        public async Task Check(CommandEventArgs args)
+        public override async Task Check(CommandEventArgs args)
         {
             string param = args.GetArg(parameter);
             if (string.IsNullOrWhiteSpace(param))
@@ -30,7 +29,7 @@ namespace DiscBot.Actions
                 return;
             }
 
-            await func.Invoke(args);
+            await successAction.Invoke(args);
         }
     }
 }

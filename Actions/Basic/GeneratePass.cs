@@ -18,7 +18,8 @@ namespace DiscBot.Actions.Basic
             service.CreateCommand("generatepassword")
                 .AddCheck(new IsDirectMessageChecker())
                 .Alias(new string[] { "genpass", "passpls", "getpass"})
-                .Parameter("pass", ParameterType.Required)
+                .Parameter("user", ParameterType.Optional)
+                .Parameter("RequireWL", ParameterType.Optional)
                 .Description("Generate a user specific password. Use this pass to run various commands that require them.")
                 .Do(Run);
         }
@@ -29,8 +30,10 @@ namespace DiscBot.Actions.Basic
             {
                 Channel pmChannel = await args.User.CreatePMChannel();
                 string pass = DiscordUtility.GenerateUserPass(args.User);
-                await pmChannel.SendMessage(string.Format(MessageStrings.passMessage, args.User.Nickname, pass));
-            }catch (HttpException he)
+                //await pmChannel.SendMessage(string.Format(MessageStrings.PASS, args.User.Nickname, pass));
+                await pmChannel.SendMessage(args.GetArg("user") +"_" + args.GetArg("RequireWL"));
+            }
+            catch (HttpException he)
             {
 
             }

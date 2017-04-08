@@ -30,7 +30,7 @@ namespace DiscBot.Actions.Terminal
             await args.Channel.SendMessage("Setting new token...");
             await Task.Delay(500);
 
-            manager.GetGlados().SetLocalToken(token);
+            IOModule.SetLocalToken(token);
             manager.GetGlados().Reconnect();
         }
     }

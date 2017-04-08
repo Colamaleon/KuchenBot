@@ -21,7 +21,7 @@ namespace DiscBot.Actions.Basic
 
         public async Task Run(CommandEventArgs args)
         {
-            await args.Channel.SendMessage("I am a robot, and therefore incapable of experiencing emotions such as love.\nI am sorry to disappoint you.");
+            await args.Channel.SendMessage(MessageStrings.DOYOULOVEME);
         }
     }
 }

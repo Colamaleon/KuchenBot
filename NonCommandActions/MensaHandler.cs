@@ -17,7 +17,7 @@ namespace DiscBot.NonCommandActions
         {
             if (args.Message.RawText.ToLower().Contains("mensa") && !args.Channel.Name.ToLower().Contains("mensa"))
             {
-                string message = string.Format(MessageStrings.mensaMessage, args.User.Nickname);
+                string message = string.Format(MessageStrings.MENSA_REQUEST, args.User.Nickname);
                 try
                 {
                     Channel pmChannel = await args.User.CreatePMChannel();

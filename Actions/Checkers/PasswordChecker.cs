@@ -10,18 +10,17 @@ using Discord.Commands.Permissions;
 
 namespace DiscBot.Actions
 {
-    class PasswordChecker
+    class PasswordChecker : CustomChecker
     {
         string password;
-        Func<CommandEventArgs, Task> func;
 
-        public PasswordChecker(string pass, Func<CommandEventArgs, Task> func)
+        public PasswordChecker(string pass, Func<CommandEventArgs, Task> func) : base(func)
         {
             this.password = pass;
-            this.func = func;
+            this.successAction = func;
         }
 
-        public async Task Check(CommandEventArgs args)
+        public override async Task Check(CommandEventArgs args)
         {
             string pass = args.GetArg("password");
 
@@ -35,7 +34,7 @@ namespace DiscBot.Actions
             // Check password
             if (pass == password)
             {
-                await func.Invoke(args);
+                await successAction.Invoke(args);
             }
             else
             {

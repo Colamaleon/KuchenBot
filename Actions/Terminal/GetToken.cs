@@ -23,7 +23,7 @@ namespace DiscBot.Actions.Terminal
 
         public static async Task Run(CommandEventArgs args)
         {
-            string token = GetToken.manager.GetGlados().GetLocalToken();
+            string token = IOModule.GetLocalToken();
             await args.Channel.SendMessage(token);
         }
     }

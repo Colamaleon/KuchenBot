@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Discord.Commands;
 using Discord;
 
-using DiscBot.Actions.Attributes;
+using DiscBot.Actions;
 
 namespace DiscBot.Actions.Basic
 {

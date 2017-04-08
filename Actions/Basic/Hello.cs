@@ -21,7 +21,7 @@ namespace DiscBot.Actions.Basic
 
         public static async Task Run(CommandEventArgs args)
         {
-            await args.Channel.SendMessage(MessageStrings.helloMessage);
+            await args.Channel.SendMessage(MessageStrings.HELLO);
         }
     }
 }

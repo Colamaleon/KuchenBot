@@ -11,6 +11,9 @@ namespace DiscBot
 {
     public class GLaDOS
     {
+
+
+
         #region Attributes
         
         DiscordClient discord;
@@ -24,6 +27,7 @@ namespace DiscBot
         {
 
         }
+
         public GLaDOS()
         {
             // Bind manager
@@ -41,6 +45,7 @@ namespace DiscBot
             {
                 x.PrefixChar = '!';
                 x.AllowMentionPrefix = false;
+                x.HelpMode = HelpMode.Public;
             });
 
             // Welcome
@@ -51,6 +56,10 @@ namespace DiscBot
             {
                 RegisterLocalToken();
             }
+
+            //DEBUG: Add ChannelBlacklistService
+            discord.AddService<Services.ChannelBlackListService>();
+            discord.AddService<Services.ChannelWhiteListService>();
 
             // Register all commands
             RegisterCommands();
@@ -71,66 +80,11 @@ namespace DiscBot
             Console.WriteLine();
         }
 
-        protected void Connect()
-        {
-            try
-            {
-                discord.ExecuteAndWait(async () =>
-                {
-                    await discord.Connect(GetLocalToken(), TokenType.Bot);
-
-                    // Start command listener
-                    CommandListener();
-                });
-            }
-            catch (System.Exception ex)
-            {
-                Console.WriteLine("GLaDOS could not be started. ");
-                Console.WriteLine(ex.Message);
-                Console.WriteLine("");
-
-                // Register new local token
-                RegisterLocalToken();
-            }
-        }
-
-        public string GetLocalToken()
-        {
-            try
-            {
-                return System.IO.File.ReadAllText(IOModule.TokenPath);
-            }
-            catch (Exception ex)
-            {
-                return "";
-            }
-        }
-
-        public bool SetLocalToken(string token)
-        {
-            try
-            {
-                if (!System.IO.Directory.Exists(IOModule.AppDataPath))
-                {
-                    System.IO.Directory.CreateDirectory(IOModule.AppDataPath);
-                }
-                System.IO.StreamWriter file = new System.IO.StreamWriter(IOModule.TokenPath);
-                file.WriteLine(token);
-                file.Close();
-
-                return true;
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
-        }
-
         protected void RegisterLocalToken()
         {
             Console.WriteLine("Please enter the bot token");
             string token = Console.ReadLine();
-            SetLocalToken(token);
+            IOModule.SetLocalToken(token);
             Console.WriteLine("");
 
             Connect();
@@ -170,7 +124,7 @@ namespace DiscBot
                 if (command.StartsWith("registertoken "))
                 {
                     string token = command.Replace("registertoken ", "");
-                    SetLocalToken(token);
+                    IOModule.SetLocalToken(token);
 
                     Disconnect();
                     Console.WriteLine("");
@@ -184,6 +138,29 @@ namespace DiscBot
 
         #endregion
 
+        protected void Connect()
+        {
+            try
+            {
+                discord.ExecuteAndWait(async () =>
+                {
+                    await discord.Connect(IOModule.GetLocalToken(), TokenType.Bot);
+
+                    // Start command listener
+                    CommandListener();
+                });
+            }
+            catch (System.Exception ex)
+            {
+                Console.WriteLine("GLaDOS could not be started. ");
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("");
+
+                // Register new local token
+                RegisterLocalToken();
+            }
+        }
+
         public async void Reconnect()
         {
             await discord.Disconnect();
@@ -195,10 +172,15 @@ namespace DiscBot
             await discord.Disconnect();
         }
 
+        
+
         private void Log(object sender, LogMessageEventArgs args)
         {
             Console.WriteLine(args.Message);
         }
+
+
+        #region EventHandler
 
         private void OnMessage(object sender, MessageEventArgs args)
         {
@@ -207,5 +189,8 @@ namespace DiscBot
 
             Console.WriteLine(args.Message.RawText);
         }
+
+        #endregion
+
     }
 }

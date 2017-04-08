@@ -10,7 +10,7 @@ namespace DiscBot
 		public static void Main(string[] args)
         {
             Console.WindowHeight = 55;
-
+            Console.Title = "GLaDOS";
 
             glados = new GLaDOS();
 		}
