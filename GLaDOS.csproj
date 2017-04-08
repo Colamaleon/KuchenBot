@@ -63,6 +63,7 @@
     <Compile Include="Actions\Attributes\Password.cs" />
     <Compile Include="Actions\Attributes\Restrict.cs" />
     <Compile Include="Actions\Basic\DoYouLoveMe.cs" />
+    <Compile Include="Actions\Basic\GeneratePass.cs" />
     <Compile Include="Actions\Basic\Hello.cs" />
     <Compile Include="Actions\Basic\WipeAll.cs" />
     <Compile Include="Actions\GLaDOSPermissionCheck.cs" />
@@ -76,6 +77,7 @@
     <Compile Include="Actions\Terminal\SetToken.cs" />
     <Compile Include="Actions\Terminal\GetToken.cs" />
     <Compile Include="Actions\UserPermissionCheck.cs" />
+    <Compile Include="DiscordUtility.cs" />
     <Compile Include="GLaDOSManager.cs" />
     <Compile Include="IOModule.cs" />
     <Compile Include="MessageStrings.cs" />
