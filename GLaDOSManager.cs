@@ -17,7 +17,7 @@ namespace DiscBot
             gladosInstance = instance;
         }
 
-        public GLaDOS GetGlados(GLaDOSCommand c)
+        public GLaDOS GetGlados()
         {
             // TODO check wether to allow access
             return gladosInstance;

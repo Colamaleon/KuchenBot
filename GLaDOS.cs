@@ -33,6 +33,10 @@ namespace DiscBot
         }
         public GLaDOS()
         {
+            // Bind manager
+            manager = new GLaDOSManager(this);
+
+            // Init discord
             discord = new DiscordClient((obj) =>
             {
                 obj.LogLevel = LogSeverity.Info;
@@ -62,7 +66,7 @@ namespace DiscBot
             discord.MessageReceived += OnMessage;
 
             // Login
-            Login();
+            Connect();
         }
 
         private void Welcome()
@@ -74,7 +78,7 @@ namespace DiscBot
             Console.WriteLine();
         }
 
-        protected void Login()
+        protected void Connect()
         {
             try
             {
@@ -97,7 +101,7 @@ namespace DiscBot
             }
         }
 
-        protected string GetLocalToken()
+        public string GetLocalToken()
         {
             try
             {
@@ -109,7 +113,7 @@ namespace DiscBot
             }
         }
 
-        protected bool SetLocalToken(string token)
+        public bool SetLocalToken(string token)
         {
             try
             {
@@ -136,7 +140,7 @@ namespace DiscBot
             SetLocalToken(token);
             Console.WriteLine("");
 
-            Login();
+            Connect();
         }
 
         #endregion
@@ -145,9 +149,14 @@ namespace DiscBot
 
         protected void RegisterCommands()
         {
+            CommandService cs = discord.GetService<CommandService>();
+
             //new DiscBot.Actions.CommandLine.RegisterToken().Register(discord.GetService<CommandService>(), manager);
-            Actions.ShitsAndGiggles.Sing.Register(discord.GetService<CommandService>());
-            Actions.ShitsAndGiggles.Cake.Register(discord.GetService<CommandService>());
+            Actions.ShitsAndGiggles.Sing.Register(cs);
+            Actions.ShitsAndGiggles.Cake.Register(cs);
+
+            Actions.Terminal.GetToken.Register(cs, manager);
+            Actions.Terminal.SetToken.Register(cs, manager);
         }
 
         protected void CommandListener()
@@ -169,7 +178,7 @@ namespace DiscBot
 
                     Disconnect();
                     Console.WriteLine("");
-                    Login();
+                    Connect();
 
                     continue;
                 }
@@ -178,6 +187,12 @@ namespace DiscBot
         }
 
         #endregion
+
+        public async void Reconnect()
+        {
+            await discord.Disconnect();
+            Connect();
+        }
 
         public async void Disconnect()
         {
