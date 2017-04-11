@@ -24,6 +24,8 @@ namespace DiscBot
 
         public const string PERMISSION_FAIL = "You are not allowed to run this command. Reason :: {0}";
 
+        public const string DM_FAIL = "This command can only be run via a direct message!";
+
         #endregion
 
     }

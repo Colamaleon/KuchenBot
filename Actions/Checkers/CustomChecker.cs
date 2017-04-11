@@ -13,13 +13,25 @@ namespace DiscBot.Actions
     {
         protected Func<CommandEventArgs, Task> successAction;
 
+        protected class ResultUtil
+        {
+            public bool On { get; private set; }
+            public async Task TurnOn(CommandEventArgs args)
+            {
+                On = true;
+            }
+        }
+
         public CustomChecker(Func<CommandEventArgs, Task> successAction)
         {
             this.successAction = successAction;
         }
 
+        /// <summary>
+        /// Run the Check.
+        /// </summary>
         public virtual async Task Check(CommandEventArgs args)
-        { await args.Channel.SendMessage("ERROR :: Check function lacks override!"); }
-        
+        { throw new NotImplementedException(); }
+
     }
 }

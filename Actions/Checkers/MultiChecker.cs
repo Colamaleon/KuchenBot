@@ -7,24 +7,30 @@ using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
 
-namespace DiscBot.Actions.Checkers
+namespace DiscBot.Actions
 {
-    class MultiChecker : CustomChecker
+    /// <summary>
+    /// Combines multiple checker into one single check. 
+    /// </summary>
+    class MultiChecker
     {
-        CustomChecker[] checkers;
-        string expression;
+        Func<CommandEventArgs, Task> successAction;
+        Func<CommandEventArgs, bool> checkFunction;
 
-        public MultiChecker(Func<CommandEventArgs, Task> func, string expression, params CustomChecker[] checkers) : base(func)
+        public MultiChecker(Func<CommandEventArgs, Task> successAction, Func<CommandEventArgs, bool> checkFunction)
         {
-            this.successAction = func;
-            this.checkers = checkers;
-            this.expression = expression;
+            this.successAction = successAction;
+            this.checkFunction = checkFunction;
         }
 
-        public override async Task Check(CommandEventArgs args)
+        public async Task Check(CommandEventArgs args)
         {
-            await successAction.Invoke(args);
+            if (checkFunction(args))
+            {
+                await successAction.Invoke(args);
+            }
         }
 
     }
+
 }

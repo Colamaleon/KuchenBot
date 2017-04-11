@@ -9,7 +9,7 @@ using Discord;
 
 namespace DiscBot.Actions.Basic
 {
-    class Hello : GLaDOSCommand
+    class Hello
     {
         public static void Register(CommandService service)
         {

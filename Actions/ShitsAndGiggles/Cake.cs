@@ -9,7 +9,7 @@ using Discord.Commands;
 
 namespace DiscBot.Actions.ShitsAndGiggles
 {
-    class Cake : GLaDOSCommand
+    class Cake
     {
         public static void Register(CommandService service)
         {

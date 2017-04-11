@@ -9,7 +9,7 @@ using Discord.Commands;
 
 namespace DiscBot.Actions.Terminal
 {
-    class GetToken : GLaDOSCommand
+    class GetToken
     {
         static GLaDOSManager manager;
 

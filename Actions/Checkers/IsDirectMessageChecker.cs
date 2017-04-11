@@ -22,7 +22,7 @@ namespace DiscBot.Actions
                 return true;
             }else
             {
-                errorMessage = "This command can only be run via a direct message";
+                errorMessage = MessageStrings.DM_FAIL;
                 channel.SendMessage(errorMessage);
                 return false;
             }

@@ -11,7 +11,7 @@ using DiscBot.Actions;
 
 namespace DiscBot.Actions.Basic
 {
-    class WipeAll : GLaDOSCommand
+    class WipeAll
     {
         public static void Register(CommandService service)
         {

@@ -98,6 +98,9 @@ namespace DiscBot
         {
             CommandService cs = discord.GetService<CommandService>();
 
+            Actions.Basic.Hello.Register(cs);
+            Actions.Basic.DebugMC.Register(cs);
+
             //new DiscBot.Actions.CommandLine.RegisterToken().Register(discord.GetService<CommandService>(), manager);
             Actions.ShitsAndGiggles.Sing.Register(cs);
             Actions.ShitsAndGiggles.Cake.Register(cs);

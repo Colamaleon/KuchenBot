@@ -59,6 +59,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Actions\Basic\DebugMC.cs" />
     <Compile Include="Actions\Basic\DoYouLoveMe.cs" />
     <Compile Include="Actions\Basic\GeneratePass.cs" />
     <Compile Include="Actions\Basic\Hello.cs" />
@@ -72,10 +73,11 @@
     <Compile Include="Actions\ShitsAndGiggles\Cake.cs" />
     <Compile Include="Actions\ShitsAndGiggles\Sing.cs" />
     <Compile Include="Actions\ShitsAndGiggles\LetsBeFriends.cs" />
-    <Compile Include="Actions\GLaDOSCommand.cs" />
     <Compile Include="Actions\Checkers\RestrictionType.cs" />
     <Compile Include="Actions\Terminal\SetToken.cs" />
     <Compile Include="Actions\Terminal\GetToken.cs" />
+    <Compile Include="ConfigServer\ConfigServerIO.cs" />
+    <Compile Include="ConfigServer\ConfigServerService.cs" />
     <Compile Include="DiscordUtility.cs" />
     <Compile Include="GLaDOSManager.cs" />
     <Compile Include="IOModule.cs" />

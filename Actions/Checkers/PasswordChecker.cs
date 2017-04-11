@@ -14,10 +14,10 @@ namespace DiscBot.Actions
     {
         string password;
 
-        public PasswordChecker(string pass, Func<CommandEventArgs, Task> func) : base(func)
+        public PasswordChecker(string pass, Func<CommandEventArgs, Task> successAction) : base(successAction)
         {
             this.password = pass;
-            this.successAction = func;
+            this.successAction = successAction;
         }
 
         public override async Task Check(CommandEventArgs args)
@@ -41,5 +41,6 @@ namespace DiscBot.Actions
                 await args.Channel.SendMessage("Incorrect password.");
             }
         }
+
     }
 }
