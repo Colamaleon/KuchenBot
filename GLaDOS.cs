@@ -60,6 +60,7 @@ namespace DiscBot
             //DEBUG: Add ChannelBlacklistService
             discord.AddService<Services.ChannelBlackListService>();
             discord.AddService<Services.ChannelWhiteListService>();
+            discord.AddService<Services.ConfigServerService>();
 
             // Register all commands
             RegisterCommands();
@@ -100,11 +101,13 @@ namespace DiscBot
 
             Actions.Basic.Hello.Register(cs);
             Actions.Basic.DebugMC.Register(cs);
+            Actions.Basic.Labstatus.Register(cs);
 
             //new DiscBot.Actions.CommandLine.RegisterToken().Register(discord.GetService<CommandService>(), manager);
             Actions.ShitsAndGiggles.Sing.Register(cs);
             Actions.ShitsAndGiggles.Cake.Register(cs);
             Actions.ShitsAndGiggles.OhNo.Register(cs);
+            
 
             Actions.Terminal.GetToken.Register(cs, manager);
             Actions.Terminal.SetToken.Register(cs, manager);

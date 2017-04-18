@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
 
-namespace DiscBot.ConfigServer
+namespace DiscBot.Services
 {
     /// <summary>
     /// The service for communicating with the config server.
@@ -20,7 +20,6 @@ namespace DiscBot.ConfigServer
         public void Install(DiscordClient client)
         {
             this.client = client;
-            this.client.Ready += FindConfigServer;
         }
 
         /// <summary>
@@ -28,11 +27,15 @@ namespace DiscBot.ConfigServer
         /// </summary>
         private void FindConfigServer(object sender, EventArgs args)
         {
-            if(client.FindServers(">GLaDOS").First() != null)
+            IEnumerable<Server> matches = client.FindServers(">GLaDOS");
+            if ( matches.Count() > 0 && matches.First() != null)
             {
                 Server ser = client.FindServers(">GLaDOS").First();
                 Console.WriteLine("Found possible config server match... " + ser.Id);
                 this.ConfigServerID = ser.Id;
+            }else
+            {
+                Console.WriteLine("Could not connect to config server! Please check if the server is available.");
             }
         }
 
