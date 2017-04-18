@@ -17,23 +17,29 @@ namespace DiscBot.ConfigServer
         public DiscordClient client { get; private set; }
         public ulong ConfigServerID { get; private set; }
 
+        public ConfigServerIO IOModule { get; private set; }
+
         public void Install(DiscordClient client)
         {
             this.client = client;
-            this.client.Ready += FindConfigServer;
+            IOModule = new ConfigServerIO(this);
         }
 
         /// <summary>
-        ///  As soon as the client is ready, try looking up the id of the config server
+        ///  Try looking up the config server
         /// </summary>
-        private void FindConfigServer(object sender, EventArgs args)
+        private Server FindConfigServer()
         {
             if(client.FindServers(">GLaDOS").First() != null)
             {
                 Server ser = client.FindServers(">GLaDOS").First();
                 Console.WriteLine("Found possible config server match... " + ser.Id);
-                this.ConfigServerID = ser.Id;
+                return ser;
+            }else
+            {
+                throw new Exception("ConfigServerService :: Config server not found!");
             }
+
         }
 
     }

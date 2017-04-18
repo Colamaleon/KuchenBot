@@ -12,8 +12,6 @@ namespace DiscBot
     public class GLaDOS
     {
 
-
-
         #region Attributes
         
         DiscordClient discord;
@@ -174,8 +172,6 @@ namespace DiscBot
         {
             await discord.Disconnect();
         }
-
-        
 
         private void Log(object sender, LogMessageEventArgs args)
         {

@@ -18,22 +18,35 @@ namespace DiscBot.ConfigServer
             this.service = service;
         }
 
-        public ulong OutputChannel
+        //channel IDs
+        public Channel ConsoleChannel
+        { get { return GetConfigChannel("console"); } }
+        public Channel OutputChannel
+        { get { return GetConfigChannel("output"); } }
+        public Channel ConfigChannel
+        { get { return GetConfigChannel("commandconfigs"); }}
+
+
+        /// <summary>
+        /// Print the message to the output channel
+        /// </summary>
+        public async Task PrintOutput(string message, string prefix = "")
         {
-            get { return 0; }
-            private set { }
+            await OutputChannel.SendMessage(prefix + message);
         }
 
-        public async Task PrintMessage(Channel channel, string message, string customPrefix = "")
+        /// <summary>
+        ///  Get the Channel object of the specified channel 
+        /// </summary>
+        private Channel GetConfigChannel(string channelname)
         {
-
-        }
-
-        private ulong GetOutputChannelID()
-        {
-            IEnumerable<Channel> channelmatches = service.client.GetServer(service.ConfigServerID).FindChannels("output", ChannelType.Text);
-
-            throw new NotImplementedException();
+            IEnumerable<Channel> channelmatches = service.client.GetServer(service.ConfigServerID).FindChannels(channelname, ChannelType.Text);
+            foreach (Channel match in channelmatches)
+            {
+                Console.WriteLine(string.Format("GetChannelID :: {0} :: Found possible match {1} : {2}"));
+                return match;
+            }
+            return null;
         }
 
     }
